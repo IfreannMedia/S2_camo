@@ -9,12 +9,25 @@ public class DNA : MonoBehaviour
     public float r;
     public float g;
     public float b;
+    bool dead = false;
+    public float timeToDie = 0.0f;
+    SpriteRenderer spriteRenderer;
+    Collider2D sCollider;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        sCollider = GetComponent<Collider2D>();
+        spriteRenderer.color = new Color(r, g, b);
+    }
+
+    private void OnMouseDown()
+    {
+        dead = true;
+        timeToDie = PopulationManager.elapsed;
+        Debug.Log("dead at: " + timeToDie);
+        spriteRenderer.enabled = false;
+        sCollider.enabled = false;
     }
 
     // Update is called once per frame
