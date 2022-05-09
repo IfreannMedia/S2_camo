@@ -74,9 +74,19 @@ public class PopulationManager : MonoBehaviour
         GameObject offspring = Instantiate(personPrefab, pos, Quaternion.identity);
         DNA dna1 = firstPerson.GetComponent<DNA>();
         DNA dna2 = firstPerson.GetComponent<DNA>();
-        offspring.GetComponent<DNA>().r = Random.Range(0,10) < 5 ? dna1.r : dna2.r;
-        offspring.GetComponent<DNA>().g = Random.Range(0,10) < 5 ? dna1.g : dna2.g;
-        offspring.GetComponent<DNA>().b = Random.Range(0,10) < 5 ? dna1.b : dna2.b;
+        if (Random.Range(0, 100) < 5)
+        {
+            offspring.GetComponent<DNA>().r = Random.Range(0, 10) < 5 ? dna1.r : dna2.r;
+            offspring.GetComponent<DNA>().g = Random.Range(0, 10) < 5 ? dna1.g : dna2.g;
+            offspring.GetComponent<DNA>().b = Random.Range(0, 10) < 5 ? dna1.b : dna2.b;
+        } else
+        {
+            // mutation
+            offspring.GetComponent<DNA>().r = Random.Range(0f, 1.0f);
+            offspring.GetComponent<DNA>().g = Random.Range(0f, 1.0f);
+            offspring.GetComponent<DNA>().b = Random.Range(0f, 1.0f);
+        }
+
 
         return offspring;
     }
