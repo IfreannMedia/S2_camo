@@ -9,6 +9,7 @@ public class DNA : MonoBehaviour
     public float r;
     public float g;
     public float b;
+    public float s;
     bool dead = false;
     public float timeToDie = 0.0f;
     SpriteRenderer spriteRenderer;
@@ -19,6 +20,7 @@ public class DNA : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         sCollider = GetComponent<Collider2D>();
         spriteRenderer.color = new Color(r, g, b);
+        transform.localScale = new Vector3(s, s, s);
     }
 
     private void OnMouseDown()
